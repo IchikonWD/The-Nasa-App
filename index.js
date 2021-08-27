@@ -2,6 +2,8 @@ const express = require("express");
 require("dotenv").config();
 require("./src/utils/db");
 
+const router_api = require('./src/routes/routes_api')
+
 const app = express();
 const port = process.env.PORT;
 
@@ -10,6 +12,12 @@ app.use(express.json());
 
 app.set("view engine", "pug");
 app.set("views", "./views");
+
+
+//Routes
+app.use('/api', router_api);
+
+// Error handling
 
 // 404
 app.use(function (req, res, next) {
